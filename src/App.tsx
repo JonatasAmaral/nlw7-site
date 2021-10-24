@@ -1,5 +1,10 @@
+import styles from "./App.module.scss";
+
 function App() {
-	return <h1>"Hello World"</h1>;
+	return (
+		<main className={styles.contentWrapper}>
+		</main>
+	);
 }
 
 export default App;
