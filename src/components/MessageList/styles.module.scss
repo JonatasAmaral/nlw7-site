@@ -1,7 +1,8 @@
 .MessageListWrapper {
 	display: flex;
+	padding: 0 2rem;
 	flex-direction: column;
-	align-items: flex-start;
+	align-items: center;
 	justify-content: space-between;
 
 	> img {
@@ -37,6 +38,7 @@
 
 			.userImage {
 				padding: 2px;
+				margin-right: 1rem;
 				background: linear-gradient(100deg, #ff008e 0.48%, #ffcd1e 100%);
 				border-radius: 50%;
 				line-height: 0;
