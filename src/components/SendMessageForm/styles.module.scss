@@ -9,6 +9,7 @@
 	justify-content: center;
 
 	position: relative;
+	box-shadow: 10px 10px 20px 0px rgb(0, 0, 0, 0.3);
 }
 
 .signOutButton {
@@ -125,4 +126,15 @@
 			filter: brightness(0.9);
 		}
 	}
+}
+
+.sendMessageFormWrapper::before {
+	content: "";
+	background: url("../../assets/seal.svg") no-repeat center;
+	background-size: contain;
+	width: 90px;
+	height: 90px;
+	position: absolute;
+	right: 35px;
+	top: -45px;
 }
