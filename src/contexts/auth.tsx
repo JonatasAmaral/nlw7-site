@@ -40,6 +40,8 @@ export function AuthProvider({ children }: AuthProvider) {
 
 		const { token, user } = response.data;
 
+		api.defaults.headers.common.authorization = `Bearer ${token}`;
+
 		localStorage.setItem("@dowhile:token", token);
 		setUser(user);
 	}
