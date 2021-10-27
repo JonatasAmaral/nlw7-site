@@ -1,6 +1,17 @@
 import { useEffect } from "react";
 import { VscGithubInverted } from "react-icons/vsc";
+import { api } from "../../services/api";
 import styles from "./styles.module.scss";
+
+type AuthResponse = {
+	token: string;
+	user: {
+		id: string;
+		name: string;
+		avatar_url: string;
+		login: string;
+	};
+};
 
 export default function LoginBox() {
 	const signInURL = `https://github.com/login/oauth/authorize?scope=user&client_id=${
@@ -8,6 +19,17 @@ export default function LoginBox() {
 	}&redirect_uri=http://localhost:4000/signin/callback?forward_to=${
 		window.location.href
 	}`;
+
+	async function signIn(githubCode: string) {
+		const response = await api.post<AuthResponse>("authenticate", {
+			code: githubCode,
+		});
+
+		const { token, user } = response.data;
+
+		localStorage.setItem("@dowhile:token", token);
+		console.log(user);
+	}
 
 	useEffect(() => {
 		// const queryString = window.location.search;
@@ -19,6 +41,8 @@ export default function LoginBox() {
 			const cleanedURL = origin + pathname;
 
 			window.history.pushState({}, "", cleanedURL);
+
+			signIn(githubCode);
 		}
 	}, []);
 
