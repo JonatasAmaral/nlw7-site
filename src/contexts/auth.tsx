@@ -28,8 +28,8 @@ export function AuthProvider({ children }: AuthProvider) {
 	const [user, setUser] = useState<User | null>(null);
 
 	const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=${
-		import.meta.env.VITE_GITHUB_CLIENT_ID as string
-	}&redirect_uri=http://localhost:4000/signin/callback?forward_to=${
+		import.meta.env.VITE_GITHUB_CLIENT_ID
+	}&redirect_uri=${api.defaults.baseURL}/signin/callback?forward_to=${
 		window.location.href
 	}`;
 
